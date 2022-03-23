@@ -5,6 +5,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
 
 function TodoApp(){
     const initialTodos = [
@@ -13,6 +14,9 @@ function TodoApp(){
         { id: 3, task: "Grow beard", completed: false }
     ]
     const [todos, setTodos] = useState(initialTodos);
+    const addTodo = newTodoText => {
+        setTodos([...todos, {id:4, task: newTodoText, completed: false}]);
+    }
     return (
         <Paper sx={{
             padding: 0,
@@ -27,6 +31,7 @@ function TodoApp(){
                 <Typography color="inherit"> Hooks Todo </Typography>
             </Toolbar>
         </AppBar>
+        <TodoForm addTodo={addTodo} />
         <TodoList todos={todos} />
         </Paper>
     )
