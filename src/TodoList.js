@@ -6,26 +6,28 @@ import ListItemText from "@mui/material/ListItemText";
 import Todo from "./Todo";
 
 function TodoList(props){
-    return (
-        <Paper>
-            <List>
-                {props.todos.map(( todo, i ) => (
-                    <>
-                        <Todo
-                            task={todo.task}
-                            key={todo.id}
-                            id={todo.id}
-                            completed={todo.completed}
-                            removeTodo={props.removeTodo}
-                            toggleTodo={props.toggleTodo}
-                            editTodo={props.editTodo}
-                        />
-                        {i < props.todos.length - 1 && <Divider />}
-                    </>
-                )
-            )}
-            </List>
-        </Paper>
-    )
+    if(props.todos.length)
+        return (
+            <Paper>
+                <List>
+                    {props.todos.map(( todo, i ) => (
+                        <>
+                            <Todo
+                                task={todo.task}
+                                key={todo.id}
+                                id={todo.id}
+                                completed={todo.completed}
+                                removeTodo={props.removeTodo}
+                                toggleTodo={props.toggleTodo}
+                                editTodo={props.editTodo}
+                            />
+                            {i < props.todos.length - 1 && <Divider />}
+                        </>
+                    )
+                )}
+                </List>
+            </Paper>
+        )
+    return null;
 };
 export default TodoList;
