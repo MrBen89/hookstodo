@@ -9,7 +9,7 @@ function TodoList(props){
     return (
         <Paper>
             <List>
-                {props.todos.map(todo => (
+                {props.todos.map(( todo, i ) => (
                     <>
                         <Todo
                             task={todo.task}
@@ -20,7 +20,7 @@ function TodoList(props){
                             toggleTodo={props.toggleTodo}
                             editTodo={props.editTodo}
                         />
-                        <Divider />
+                        {i < props.todos.length - 1 && <Divider />}
                     </>
                 )
             )}
