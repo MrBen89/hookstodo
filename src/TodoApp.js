@@ -10,7 +10,7 @@ import TodoForm from "./TodoForm";
 
 
 function TodoApp(){
-    const initialTodos = JSON.parse(window.localStorage.getItem("todos")|| "[]")
+    const initialTodos = [{ id: "01", task: "Create a task", completed: false}]
     const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(initialTodos);
 
 
