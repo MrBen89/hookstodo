@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, memo } from "react";
 import ListItem from "@mui/material/ListItem";
 import EditTodoForm from "./EditTodoForm";
 import useToggleState from "./hooks/useToggleState";
@@ -33,4 +33,4 @@ function Todo({ task, completed, id }) {
     )
 };
 
-export default Todo;
+export default memo(Todo);
