@@ -7,18 +7,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
+import {TodosProvider} from "./contexts/todos.context";
 
 
 function TodoApp(){
-    const initialTodos = [{ id: "01", task: "Create a task", completed: false}]
-    const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(initialTodos);
-
-
-    useEffect(() => {
-        window.localStorage.setItem("todos", JSON.stringify(todos))
-    }, [todos]);
-
-
 
     return (
         <Paper sx={{
@@ -36,13 +28,10 @@ function TodoApp(){
         </AppBar>
         <Grid container justifyContent="center" sx={{marginTop: "1rem"}}>
             <Grid item xs={11} md={8} lg={4}>
-                <TodoForm addTodo={addTodo} />
-                <TodoList
-                    todos={todos}
-                    removeTodo={removeTodo}
-                    toggleTodo={toggleTodo}
-                    editTodo={editTodo}
-                />
+                <TodosProvider>
+                    <TodoForm />
+                    <TodoList />
+                    </TodosProvider>
                 </Grid>
         </Grid>
         </Paper>
