@@ -2,11 +2,11 @@ import { useContext } from "react";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import useInputState from "./hooks/useInputState";
-import { TodosContext } from "./contexts/todos.context";
+import { DispatchContext } from "./contexts/todos.context";
 
 function TodoForm(props){
     const [value, handleChange, reset] = useInputState("");
-    const { dispatch } = useContext(TodosContext);
+    const dispatch = useContext(DispatchContext);
     return (
         <Paper sx={{margin: "1rem 0", padding: "0 1rem"}}>
             <form onSubmit={e => {
